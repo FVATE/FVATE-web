@@ -1,0 +1,24 @@
+
+# - kind: RSVP
+#   properties:
+#   - name: name
+#   - name: created
+#     direction: desc
+
+# - kind: RSVP
+#   properties:
+#   - name: email
+#   - name: created
+#     direction: desc
+
+# - kind: RSVP
+#   properties:
+#   - name: phone
+#   - name: created
+#     direction: desc
+
+# - kind: RSVP
+#   properties:
+#   - name: instagram
+#   - name: created
+#     direction: desc

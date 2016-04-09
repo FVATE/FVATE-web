@@ -1,0 +1,13 @@
+###
+**
+ * example directive
+ *
+###
+
+app = angular.module "app"
+
+
+app.directive "rsvp:focus", ->
+  console.info 'rsvp:focus'
+  return (scope, elem, attrs)->
+    elem[0].focus()

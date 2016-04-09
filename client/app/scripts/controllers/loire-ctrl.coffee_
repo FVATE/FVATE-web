@@ -1,0 +1,101 @@
+
+app = angular.module "app"
+
+
+CODES = [
+  'ame',
+  'falseidol',
+  'idol',
+  'limbo',
+  'vael',
+  'virgin',
+  'worship',
+  'jacob',
+  'unvael',
+]
+
+
+ENABLE_SUBMIT_LOCK = false
+FORM_X_POS = 500
+FORM_Y_POS = 300
+
+
+app.controller "loire-ctrl", ($scope, $http)->
+
+  # DEBUG
+  # console.info '$rootScope:', $rootScope, '$scope:', $scope
+  # window.$rootScope = $rootScope
+
+  $scope.created = false
+  $scope.codeentered = false
+  $scope.rsvpcreated = false
+  $scope.loireoverlay = false
+
+  $scope.focuscode = ($event) ->
+    return if not $event?
+    # track how many people even click on the rsvp code input..
+    ga 'send', 'event', 'rsvp-code', 'focused', {}
+
+  $scope.submitcode = (rsvp) ->
+    # console.info 'submitcode:', rsvp
+    rsvp.codeRaw = rsvp.code
+    rsvp.code = rsvp.code.toLowerCase()
+    $scope.loading = true
+    for c in CODES
+      if c.toLowerCase() is rsvp.code
+
+        # RSVP CODE ENTERED
+
+        $scope.rsvp = rsvp
+        $scope.codeentered = true
+        $scope.loireoverlay = true
+        window.scrollTo FORM_X_POS, FORM_Y_POS
+
+        ga 'send', 'event', 'rsvp-code', 'entered', rsvp
+        return
+
+    ga 'send', 'event', 'rsvp-code', 'failed', rsvp
+
+  $scope.submitrsvp = (rsvp) ->
+    # prevent double submits with a lock. but for now, fuck it..
+    # console.info 'submitrsvp:', rsvp
+    if ENABLE_SUBMIT_LOCK
+      if $scope.submitting
+        return
+      $scope.submitting = true
+
+    # send to the api
+    $http(
+      method: "POST"
+      url: "/api/rsvp/create"
+      data: rsvp
+    ).success((data) ->
+
+      $scope.data = data
+      $scope.loading = false
+      $scope.rsvpcreated = true
+      $scope.submitting = false
+
+      # console.info 'success:', $scope
+
+      # manually add a cssclass to the document body
+      $body = angular.element document.body
+      $body.addClass 'rsvpcreated'
+      window.scrollTo FORM_X_POS, 0
+
+      # track the successful submit
+      ga 'send', 'event', 'rsvp', 'created', rsvp
+
+      # set user level ga dimension that the user has RSVP'd..
+      ga 'set', 'dimension1', 1
+
+    ).error((data, status, headers, config) ->
+      $scope.loading = false
+      $scope.submitting = false
+
+      # merge data with the rsvp
+      rsvp.error = data
+
+      ga 'send', 'event', 'rsvp', 'failed', rsvp
+
+    )

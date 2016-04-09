@@ -1,0 +1,62 @@
+total_storage_limit: 1G
+queue:
+
+- name: default
+  rate: 50/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  retry_parameters:
+    task_retry_limit: 5
+
+- name: aggregation
+  rate: 10/s
+  bucket_size: 5
+  target: mapreduce-backend-{{ver_id}}
+  retry_parameters:
+    task_retry_limit: 100
+    min_backoff_seconds: 10
+    max_backoff_seconds: 600
+
+- name: automailer
+  rate: 50/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  retry_parameters:
+    task_retry_limit: 1
+
+- name: csvimport
+  rate: 5/s
+  bucket_size: 10
+  max_concurrent_requests: 10
+  retry_parameters:
+    task_retry_limit: 10
+
+- name: customers-mailing
+  rate: 100/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  retry_parameters:
+    task_retry_limit: 5
+
+- name: mail
+  rate: 50/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  # target: backend-{{ver_id}}
+  retry_parameters:
+    task_retry_limit: 5
+
+- name: social
+  rate: 500/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  retry_parameters:
+    task_retry_limit: 5
+
+- name: social-messaging
+  rate: 500/s
+  bucket_size: 100
+  max_concurrent_requests: 100
+  retry_parameters:
+    task_retry_limit: 5
+    task_age_limit: 3d

@@ -1,0 +1,6 @@
+backends:
+
+- name: mapreduce-backend-{{ver_id}}
+  class: B4
+  instances: 2
+  options: "dynamic, public"

@@ -1,0 +1,75 @@
+<div id="souterrain">
+  <div id="provence"></div>
+  <div id="bretagne"></div>
+  <div id="loire">
+
+    <div class="rsvp-code-form-ctrl" ng-hide="codeentered">
+      <form novalidate>
+
+        <input type="text"
+               ng-click="focuscode($event)"
+               name="code"
+               ng-model="rsvp.code"
+               placeholder="ENTER RSVP CODE"
+        />
+
+        <button ng-click="submitcode(rsvp)">submit code</button>
+
+      </form>
+    </div>
+
+    <div class="rsvp-form-ctrl" ng-show="codeentered">
+
+      <div class="instruction">
+        please enter your contact details below
+      </div>
+      <div class="instruction">
+        all confirmed guests will be sent location details the morning of the event
+      </div>
+
+      <form novalidate>
+
+        <input type="text"
+               autofocus
+               name="name"
+               ng-model="rsvp.name"
+               placeholder="YOUR NAME"
+               rsvp:focus />
+
+        <input type="email"
+               name="email"
+               ng-model="rsvp.email"
+               placeholder="YOUR EMAIL @" />
+
+        <input type="text"
+               name="phone"
+               ng-model="rsvp.phone"
+               placeholder="YOUR PHONE #" />
+
+        <input class="instagram"
+               type="instagram"
+               name="instagram"
+               ng-model="rsvp.instagram"
+               placeholder="@ YOUR INSTAGRAM" />
+
+        <select name="guests" ng-model="rsvp.guests">
+          <option value="+0" default="+ 0" selected="selected">+ 0</option>
+          <option value="+1">+ 1</option>
+        </select>
+
+        <button ng-click="submitrsvp(rsvp)">submit</button>
+
+      </form>
+    </div>
+
+    <div class="loire-overlay overlay" ng-show="loireoverlay"></div>
+  </div>
+
+  </div>
+</div>
+
+<!-- <div class="loire-overlay overlay" ng-show="loireoverlay"></div> -->
+
+<div class="rsvp-created-ctrl overlay" ng-show="rsvpcreated">
+  thanks.
+</div>

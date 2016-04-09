@@ -1,0 +1,36 @@
+cron:
+
+- description: {{app_id}} hourly exceptions report
+  url: /_ereporter?sender={{buildbot_email}}&to={{admin_email}}&versions=all&delete=true
+  schedule: every 1 hours
+  # target: backend-{{ver_id}}
+
+# - description: daily eventlog aggregation mapreduce pipeline
+#   url: /_tasks/aggregate/start/1?full=true
+#   schedule: every day 03:00
+#   target: mapreduce-backend-{{ver_id}}
+
+# - description: hourly eventlog aggregation mapreduce pipeline
+#   url: /_tasks/aggregate/start/0
+#   schedule: every 1 hours
+#   target: mapreduce-backend-{{ver_id}}
+
+# - description: fullcontact batch retrieval
+#   url: /_tasks/fullcontact/retrieve/batch
+#   schedule: every 10 minutes
+
+# - description: api scraper
+#   url: /_tasks/scrape/update
+#   schedule: every day 03:00
+
+# - description: send mails to customers that haven't purchased in a while
+#   url: /_tasks/automailer/no_referrals_in_a_while
+#   schedule: every wednesday 09:00
+
+# - description: send weekly summary
+#   url: /_tasks/automailer/hm_weekly_summary
+#   schedule: every monday 09:00
+
+# - description: send weekly leaderboard
+#   url: /_tasks/automailer/hm_weekly_leaderboard
+#   schedule: every friday 12:00

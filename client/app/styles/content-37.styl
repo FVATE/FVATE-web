@@ -1,0 +1,190 @@
+/**
+ * CONTENT-37 STYLESHEET
+ */
+
+.content-37
+  border-top 0
+  padding-top 130px
+  padding-bottom 130px
+
+
+@media (max-width 767px)
+  .content-37
+    padding-top 80px
+    padding-bottom 80px
+
+
+// rsvp form header
+.content-37 h3,
+.signup-form-done
+  font-size 10px
+  font-weight bold
+  font-family Georgia, serif
+  color #333
+  margin 0 0 38px
+  text-align center
+  text-transform uppercase
+  cursor default
+
+
+.content-37 .signup-form form
+  margin 0 auto
+
+
+.content-37 .signup-form form input
+  border 2px solid #dee1e3
+
+
+.content-37 .signup-form form input,
+.content-37 .signup-form form button
+  // float left
+  width 90%
+  margin 0 auto
+  margin-top 10px
+
+
+@media (max-width 480px)
+  .content-37 .signup-form form input,
+  .content-37 .signup-form form button
+    // width 100%
+    // margin 10px 0 0
+    display block
+    height 41px
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
+    box-sizing border-box
+
+
+.content-37 .signup-form form input
+  &:focus
+  &:active
+    border-color #45ffbe !important
+
+
+.content-37 .signup-form form button
+  width auto
+  padding-left 40px
+  padding-right 40px
+
+
+// FORM CONFIRMED MESSAGE
+.signup-form-done
+  // display block
+  visibility visible
+  text-align center
+
+.signup-form-done.unconfirmed
+  // display none
+  visibility hidden
+
+
+
+.synesthesia
+  border-color rgba(69,255,190, 0.5) !important
+  -webkit-box-shadow 0px 0px 35px 0px rgba(69,255,190, 0.5)
+  -moz-box-shadow 0px 0px 35px 0px rgba(69,255,190, 0.5)
+  box-shadow 0px 0px 35px 0px rgba(69,255,190, 0.5)
+
+
+// footer unvael logo
+.unvael
+  display block
+  text-indent -9999px
+  overflow hidden
+  width 35px
+  height 35px
+  background url('img/unvael-logo-sm.png') no-repeat center center
+  position absolute
+  left 50%
+  bottom 5%
+  margin-left -17px
+
+
+.btn.btn-inverse
+  background-color #000
+  text-transform uppercase
+  font-size 9px
+  letter-spacing 2px
+
+
+.content-37 input:-moz-placeholder,
+.content-37 input:-moz-placeholder
+  color #aaa !important
+  text-transform uppercase
+  font-size 9px
+  line-height 22px
+  letter-spacing 2px
+
+.content-37 input::-moz-placeholder,
+.content-37 input::-moz-placeholder
+  color #aaa !important
+  opacity 1
+  text-transform uppercase
+  font-size 9px
+  line-height 22px
+  letter-spacing 2px
+
+.content-37 input:-ms-input-placeholder,
+.content-37 input:-ms-input-placeholder
+  color #aaa !important
+  text-transform uppercase
+  font-size 9px
+  line-height 22px
+  letter-spacing 2px
+
+.content-37 input::-webkit-input-placeholder,
+.content-37 input::-webkit-input-placeholder
+  color #aaa !important
+  text-transform uppercase
+  font-size 9px
+  line-height 22px
+  letter-spacing 2px
+
+.content-37 input.placeholder,
+.content-37 input.placeholder
+  color #aaa !important
+  text-transform uppercase
+  font-size 9px
+  line-height 22px
+  letter-spacing 2px
+
+
+
+// acohol sponsors
+
+.alcohol-sponsors
+
+  position absolute
+  z-index 999
+  right 30px
+  bottom 270px
+  height 100px
+  // margin-left -50px
+  color white
+  text-align center
+  font-family Georgia, serif
+  text-transform uppercase
+  font-size 9px
+  letter-spacing 2px
+  opacity 0.6
+
+  .sponsor
+    display block
+    text-indent -9999px
+    overflow hidden
+    width 100px
+    height 100px
+    text-align center
+    margin 0 auto
+    margin-top 10px
+
+    &.lagunitas
+      width 75px
+      height 75px
+      background url('/img/alcohol-sponsors/lagunitas-logo-wht-xs.png') no-repeat center center
+
+    &.feria-de-jalisco
+      width 100px
+      height 41px
+      background url('/img/alcohol-sponsors/feria-de-jalisco-agave-tequila-xs.png') no-repeat center center
+

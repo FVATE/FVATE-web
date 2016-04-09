@@ -1,0 +1,130 @@
+application: fvate-gae
+# module: {module_id}
+# version: {{ver_id}}
+version: v1-0-1
+runtime: python27
+api_version: 1
+threadsafe: yes
+default_expiration: "0d"
+
+env_variables:
+  ENV_ID: "{{env_id}}"
+
+
+handlers:
+
+# appengine built-ins
+
+# - url: /_ah/appstats.*
+#   script: google.appengine.ext.appstats.ui.app
+#   # login: admin
+
+- url: /_ereporter.*
+  script: google.appengine.ext.ereporter.report_generator.application
+  login: admin
+
+# - url: /_ah/mapreduce.*
+#   script: mapreduce.main.APP
+#   # login: admin
+
+# - url: /_ah/pipeline.*
+#   script: mapreduce.lib.pipeline.handlers._APP
+#   # login: admin
+
+# - url: /mapreduce/pipeline/images
+#   static_dir: lib/mapreduce/lib/pipeline/ui/images
+
+# - url: /mapreduce(/.*)?
+#   script: mapreduce.main.APP
+#   # login: admin
+
+
+# static video serving routes
+
+- url: /static/img/video/(.*\.mp4)
+  mime_type: video/mp4
+  static_files: app/web/static/img/video/\1
+  upload: (.*\.mp4)
+
+# - url: /static/img/(.*\.mp4)
+#   mime_type: video/mp4
+#   static_files: app/web/static/img/video/\1
+#   upload: app/web/static/img/video/(.*\.mp4)
+
+
+# application routes
+
+# - url: /img/(.*\.mp4)
+#   mime_type: video/mp4
+#   static_dir: app/web/static/img/
+
+- url: /img/
+  static_dir: app/web/static/img/
+
+- url: /static/
+  static_dir: app/web/static/
+
+- url: .*
+  script: app.main.flaskapp
+
+
+libraries:
+- name: jinja2
+  version: "2.6"
+- name: lxml
+  version: "2.3"
+
+
+# includes:
+# - build/includes.yaml
+
+# inbound_services:
+# - warmup
+
+# force precompilation on deploy..
+derived_file_type:
+- python_precompiled
+
+
+skip_files:
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?\.bak
+- ^(.*/)?\.coverage
+- ^(.*/)?\.md
+- ^(.*/)?\.rc
+- ^(.*/)?\.sh
+
+- ^(.*/)?.*\Icon
+- ^(.*/)?requirements.txt
+- ^(.*/)?.*\.yml
+- ^(.*/)?.*\.yaml
+- ^(.*/)?.*~
+- ^(.*/)?\..*
+- ^(.*/)?\.git/.*
+- ^(.*/)?\.svn/.*
+
+- ^(.*/)?\.data/.*
+- ^(.*/)?.build/.*
+- ^(.*/)?.dist/.*
+- ^(.*/)?.egg-info/.*
+- ^(.*/)?.lint/.*
+- ^(.*/)?build/.*
+- ^(.*/)?client/.*
+- ^(.*/)?django/.*
+- ^(.*/)?docs/.*
+- ^(.*/)?paver_.*
+- ^(.*/)?pavement\.py
+- ^(.*/)?testsuite/.*
+- ^(.*/)?tests/.*
+- ^(.*/)?_tests\.py
+- ^(.*/)?ui/.*
+
+- ^(.*/)?bson/.*
+- ^(.*/)?flask_mongoengine/.*
+- ^(.*/)?gridfs/.*
+- ^(.*/)?mongoengine/.*
+- ^(.*/)?pymongo/.*
