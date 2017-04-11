@@ -21,6 +21,7 @@ machine:
 dependencies:
   pre:
     - npm config set loglevel warn  # set logging only to >= warning
+    - pip install "setuptools>=33,<34"
   post:
     - paver bootstrap
     - paver build
