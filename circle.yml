@@ -6,11 +6,11 @@
 #
 machine:
   timezone:
-    Europe/London
+    America/LosAngeles
   node:
     version: 0.10.26
   python:
-    version: 2.7.5
+    version: 2.7.11
   services:
     # - mongodb
 
@@ -20,8 +20,7 @@ machine:
 #
 dependencies:
   pre:
-    # set logging only to >= warning
-    - npm config set loglevel warn
+    - npm config set loglevel warn  # set logging only to >= warning
   post:
     - paver bootstrap
     - paver build
