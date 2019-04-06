@@ -1,3 +1,3 @@
 git+https://github.com/gregorynicholas/paver.git#egg=paver==1.2.1
 pyyaml==3.12
-jinja2==2.6
+jinja2==2.10.1
